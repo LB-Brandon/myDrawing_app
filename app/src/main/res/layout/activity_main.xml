@@ -29,6 +29,7 @@
         >
 
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
@@ -37,6 +38,7 @@
             android:background="@color/skin"
             />
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="23dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
@@ -44,6 +46,7 @@
             android:src="@drawable/pallet_normal"
             android:tag="@color/black" />
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
@@ -52,6 +55,7 @@
             android:background="@color/red"
             />
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
@@ -60,6 +64,7 @@
             android:background="@color/green"
             />
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
@@ -68,6 +73,7 @@
             android:background="@color/blue"
             />
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
@@ -76,6 +82,7 @@
             android:background="@color/lollipop"
             />
         <ImageButton
+            android:onClick="paintClicked"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="2dp"
