@@ -28,8 +28,24 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
     private var color = Color.BLACK
 
+    private var mUndoPaths = ArrayList<CustomPath>()
+
     init {
         setUpDrawing()
+    }
+
+    fun onClickUndo() {
+        if (mPaths.size > 0) {
+            mUndoPaths.add(mPaths.removeAt(mPaths.size - 1))
+            invalidate()
+        }
+    }
+
+    fun onClickRedo() {
+        if (mUndoPaths.size > 0) {
+            mPaths.add(mUndoPaths.removeAt(mUndoPaths.size - 1))
+            invalidate()
+        }
     }
 
     private fun setUpDrawing() {
@@ -58,7 +74,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         super.onDraw(canvas)
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
 
-        for (path in mPaths){
+        for (path in mPaths) {
             mDrawPaint!!.strokeWidth = path.brushThickness
             mDrawPaint!!.color = path.color
             canvas.drawPath(path, mDrawPaint!!)
@@ -103,12 +119,20 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         return true
     }
 
-    fun setSizeForBrush(newSize : Float){
-        mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, resources.displayMetrics)
+    fun setSizeForBrush(newSize: Float) {
+        mBrushSize = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            newSize,
+            resources.displayMetrics
+        )
 
         mDrawPaint!!.strokeWidth = mBrushSize
     }
 
+    fun setColor(newColor: String) {
+        color = Color.parseColor(newColor)
+        mDrawPaint!!.color = color
+    }
 
     internal inner class CustomPath(var color: Int, var brushThickness: Float) : Path() {
 
